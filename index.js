@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.masonrefresh = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -38,11 +39,17 @@ var Masonreact = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Masonreact.__proto__ || Object.getPrototypeOf(Masonreact)).call.apply(_ref, [this].concat(args))), _this), _this.componentDidMount = function () {
 
-      var cols = _this.props.cols;
-
-      var msnry = new _masonryLayout2.default('.grid', {
+      _this.msnry = new _masonryLayout2.default('.grid', {
         percentPosition: true,
-        isAnimated: false
+        transitionDuration: _this.props.transitionDuration || 0
+      });
+
+      window.addEventListener('masonreact', function () {
+        return _this.msnry.layout();
+      });
+    }, _this.componentWillUnmount = function () {
+      window.removeEventListener('masonreact', function () {
+        return _this.msnry.layout();
       });
     }, _this.render = function () {
 
@@ -78,3 +85,11 @@ var Masonreact = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Masonreact;
+
+
+var event = document.createEvent('Event');
+event.initEvent('masonreact');
+
+var masonrefresh = exports.masonrefresh = function masonrefresh() {
+  return window.dispatchEvent(event);
+};

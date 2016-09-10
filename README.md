@@ -11,7 +11,7 @@ npm i -S mansonreact
 
 ### Usage
 
-You can pass two props to Masonreact : columns numbers `cols` and `margin`.
+You can pass this props to Masonreact : `cols`, `margin` and `transitionDuration`.
 
 
 ```js
@@ -28,7 +28,7 @@ const App = () => {
   }
 
   return (
-    <Masonry cols={2} margin={10}>
+    <Masonry cols={2} margin={10} transitionDuration={'0.5s'}>
       <div style={{...style, height: 300, backgroundColor: color()}}>1</div>
       <div style={{...style, height: 200, backgroundColor: color()}}>2</div>
       <div style={{...style, height: 200, backgroundColor: color()}}>3</div>
@@ -37,11 +37,35 @@ const App = () => {
       <div style={{...style, height: 300, backgroundColor: color()}}>6</div>
     </Masonry>
   )
+  
 }
 
 
 export default App
 ```
+
+#### Refresh
+
+You can import `masonrefresh` from `masonreact` and run it to laid out items again, inside children `componentDidMount` for example.
+
+```js
+import React from 'react'
+import { masonrefresh } from 'masonreact'
+
+export default class Something extends React.Component {
+
+  componentDidMount = () => masonrefresh()
+
+  render = () => (
+    <div>
+      ...
+    </div>
+  )
+
+}
+
+```
+
 ### Render
 
 ![Render](render.png)

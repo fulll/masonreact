@@ -5,13 +5,17 @@ class Masonreact extends React.Component {
 
   componentDidMount = () => {
 
-    let cols = this.props.cols
-
-    var msnry = new Masonry('.grid', {
+    this.msnry = new Masonry('.grid', {
       percentPosition: true,
-      isAnimated: false
+      transitionDuration: this.props.transitionDuration || 0
     })
 
+    window.addEventListener('masonreact', () => this.msnry.layout())
+
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('masonreact', () => this.msnry.layout())
   }
 
   render = () => {
@@ -48,3 +52,8 @@ class Masonreact extends React.Component {
 }
 
 export default Masonreact
+
+let event = document.createEvent('Event')
+event.initEvent('masonreact')
+
+export const masonrefresh = () => window.dispatchEvent(event)
