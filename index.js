@@ -37,20 +37,20 @@ var Masonreact = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Masonreact.__proto__ || Object.getPrototypeOf(Masonreact)).call.apply(_ref, [this].concat(args))), _this), _this.componentDidMount = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Masonreact.__proto__ || Object.getPrototypeOf(Masonreact)).call.apply(_ref, [this].concat(args))), _this), _this.deferred = function () {
+      return setTimeout(function () {
+        return _this.msnry.layout();
+      }, 0);
+    }, _this.componentDidMount = function () {
 
       _this.msnry = new _masonryLayout2.default('.grid', {
         percentPosition: true,
         transitionDuration: _this.props.transitionDuration || 0
       });
 
-      window.addEventListener('masonreact', function () {
-        return _this.msnry.layout();
-      });
+      window.addEventListener('masonreact', _this.deferred);
     }, _this.componentWillUnmount = function () {
-      window.removeEventListener('masonreact', function () {
-        return _this.msnry.layout();
-      });
+      window.removeEventListener('masonreact', _this.deferred);
     }, _this.render = function () {
 
       var cols = _this.props.cols || 1;
@@ -59,7 +59,6 @@ var Masonreact = function (_React$Component) {
       var style = {
         item: {
           boxSizing: 'border-box',
-          padding: 20,
           width: 'calc(' + 100 / cols + '% - ' + 2 * margin + 'px)',
           margin: margin
         },

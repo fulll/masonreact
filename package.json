@@ -1,6 +1,6 @@
 {
   "name": "masonreact",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React component to play with the great library Masonry from desandro.",
   "main": "index.js",
   "repository": {

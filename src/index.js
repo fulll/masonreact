@@ -3,6 +3,8 @@ import Masonry from 'masonry-layout'
 
 class Masonreact extends React.Component {
 
+  deferred = () => setTimeout(() => this.msnry.layout(), 0)
+
   componentDidMount = () => {
 
     this.msnry = new Masonry('.grid', {
@@ -10,12 +12,12 @@ class Masonreact extends React.Component {
       transitionDuration: this.props.transitionDuration || 0
     })
 
-    window.addEventListener('masonreact', () => this.msnry.layout())
+    window.addEventListener('masonreact', this.deferred)
 
   }
 
   componentWillUnmount = () => {
-    window.removeEventListener('masonreact', () => this.msnry.layout())
+    window.removeEventListener('masonreact', this.deferred)
   }
 
   render = () => {
@@ -26,7 +28,6 @@ class Masonreact extends React.Component {
     const style = {
       item: {
         boxSizing: 'border-box',
-        padding: 20,
         width: `calc(${100 / cols}% - ${2 * margin}px)`,
         margin
       },

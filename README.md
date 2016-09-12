@@ -6,7 +6,7 @@ React component to play with the great library [Masonry](https://github.com/desa
 ### Installation
 
 ```
-npm i -S mansonreact
+npm i -S masonreact
 ```
 
 ### Usage
@@ -24,7 +24,8 @@ const App = () => {
   const style = {
     color: 'white',
     fontFamily: 'Sans-serif',
-    textShadow: '0 0 2px rgba(0,0,0,0.5)'
+    textShadow: '0 0 2px rgba(0,0,0,0.5)',
+    padding: 20
   }
 
   return (
@@ -37,7 +38,7 @@ const App = () => {
       <div style={{...style, height: 300, backgroundColor: color()}}>6</div>
     </Masonry>
   )
-  
+
 }
 
 
