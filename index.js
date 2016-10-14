@@ -87,7 +87,7 @@ exports.default = Masonreact;
 
 
 var event = document.createEvent('Event');
-event.initEvent('masonreact');
+event.initEvent('masonreact', true, false);
 
 var masonrefresh = exports.masonrefresh = function masonrefresh() {
   return window.dispatchEvent(event);

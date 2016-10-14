@@ -55,6 +55,6 @@ class Masonreact extends React.Component {
 export default Masonreact
 
 let event = document.createEvent('Event')
-event.initEvent('masonreact')
+event.initEvent('masonreact', true, false)
 
 export const masonrefresh = () => window.dispatchEvent(event)
