@@ -9,7 +9,7 @@ class Masonreact extends React.Component {
 
     this.msnry = new Masonry('.grid', {
       percentPosition: true,
-      transitionDuration: this.props.transitionDuration || 0
+      transitionDuration: this.props.transitionDuration
     })
 
     window.addEventListener('masonreact', this.deferred)
@@ -22,8 +22,8 @@ class Masonreact extends React.Component {
 
   render = () => {
 
-    const cols = this.props.cols || 1
-    const margin = this.props.margin || 5
+    const cols = this.props.cols
+    const margin = this.props.margin
 
     const style = {
       item: {
@@ -50,6 +50,21 @@ class Masonreact extends React.Component {
       </div>
     )
   }
+}
+
+Masonreact.propTypes = {
+  children: React.PropTypes.node.isRequired,
+  style: React.PropTypes.shape({}),
+  cols: React.PropTypes.oneOf([React.PropTypes.number, React.PropTypes.string]),
+  margin: React.PropTypes.oneOf([React.PropTypes.number, React.PropTypes.string]),
+  transitionDuration: React.PropTypes.oneOf([React.PropTypes.number, React.PropTypes.string]),
+}
+
+Masonreact.defaultProps = {
+  style: undefined,
+  cols: 1,
+  margin: 5,
+  transitionDuration: 0
 }
 
 export default Masonreact
