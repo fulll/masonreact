@@ -43,18 +43,21 @@ var Masonreact = function (_React$Component) {
       }, 0);
     }, _this.componentDidMount = function () {
 
-      _this.msnry = new _masonryLayout2.default('.grid', {
+      _this.msnry = new _masonryLayout2.default('.' + _this.props.gridClassName, {
         percentPosition: true,
-        transitionDuration: _this.props.transitionDuration || 0
+        transitionDuration: _this.props.transitionDuration
       });
 
       window.addEventListener('masonreact', _this.deferred);
     }, _this.componentWillUnmount = function () {
       window.removeEventListener('masonreact', _this.deferred);
     }, _this.render = function () {
+      var _this$props = _this.props,
+          cols = _this$props.cols,
+          margin = _this$props.margin,
+          children = _this$props.children,
+          gridClassName = _this$props.gridClassName;
 
-      var cols = _this.props.cols || 1;
-      var margin = _this.props.margin || 5;
 
       var style = {
         item: {
@@ -70,8 +73,8 @@ var Masonreact = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'grid', style: style.grid },
-        _react2.default.Children.map(_this.props.children, function (child) {
+        { className: gridClassName, style: style.grid },
+        _react2.default.Children.map(children, function (child) {
           return child ? _react2.default.cloneElement(child, {
             style: _extends({}, child.props.style, style.item)
           }) : null;
@@ -82,6 +85,23 @@ var Masonreact = function (_React$Component) {
 
   return Masonreact;
 }(_react2.default.Component);
+
+Masonreact.propTypes = {
+  children: _react2.default.PropTypes.node.isRequired,
+  style: _react2.default.PropTypes.shape({}),
+  cols: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number, _react2.default.PropTypes.string]),
+  margin: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number, _react2.default.PropTypes.string]),
+  transitionDuration: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number, _react2.default.PropTypes.string]),
+  gridClassName: _react2.default.PropTypes.string
+};
+
+Masonreact.defaultProps = {
+  style: undefined,
+  cols: 1,
+  margin: 5,
+  transitionDuration: 0,
+  gridClassName: 'grid'
+};
 
 exports.default = Masonreact;
 

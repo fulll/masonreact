@@ -71,4 +71,4 @@ export default class Something extends React.Component {
 
 ### Render
 
-![Render](render.png)
+![Render](https://github.com/inextensodigital/masonreact/blob/master/render.png)

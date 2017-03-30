@@ -1,6 +1,6 @@
 {
   "name": "masonreact",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component to play with the great library Masonry from desandro.",
   "main": "index.js",
   "repository": {
@@ -16,6 +16,9 @@
     "grid"
   ],
   "author": "Didier Franc",
+  "contributors": [
+    "Igor ESCHALIER <igor.eschalier@gmail.com> (https://github.com/ieschalier/)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xeonys/masonreact/issues"
