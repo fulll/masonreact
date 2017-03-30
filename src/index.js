@@ -7,7 +7,7 @@ class Masonreact extends React.Component {
 
   componentDidMount = () => {
 
-    this.msnry = new Masonry('.grid', {
+    this.msnry = new Masonry(`.${this.props.gridClassName}`, {
       percentPosition: true,
       transitionDuration: this.props.transitionDuration
     })
@@ -22,8 +22,7 @@ class Masonreact extends React.Component {
 
   render = () => {
 
-    const cols = this.props.cols
-    const margin = this.props.margin
+    const { cols, margin, children, gridClassName } = this.props
 
     const style = {
       item: {
@@ -38,8 +37,8 @@ class Masonreact extends React.Component {
     }
 
     return(
-      <div className='grid' style={style.grid}>
-        {React.Children.map(this.props.children, child =>
+      <div className={gridClassName} style={style.grid}>
+        {React.Children.map(children, child =>
           child ? React.cloneElement(child, {
             style: {
               ...child.props.style,
@@ -55,16 +54,18 @@ class Masonreact extends React.Component {
 Masonreact.propTypes = {
   children: React.PropTypes.node.isRequired,
   style: React.PropTypes.shape({}),
-  cols: React.PropTypes.oneOf([React.PropTypes.number, React.PropTypes.string]),
-  margin: React.PropTypes.oneOf([React.PropTypes.number, React.PropTypes.string]),
-  transitionDuration: React.PropTypes.oneOf([React.PropTypes.number, React.PropTypes.string]),
+  cols: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
+  margin: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
+  transitionDuration: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
+  gridClassName: React.PropTypes.string,
 }
 
 Masonreact.defaultProps = {
   style: undefined,
   cols: 1,
   margin: 5,
-  transitionDuration: 0
+  transitionDuration: 0,
+  gridClassName: 'grid',
 }
 
 export default Masonreact
