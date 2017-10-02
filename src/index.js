@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Masonry from 'masonry-layout'
 
 class Masonreact extends React.Component {
@@ -52,12 +53,12 @@ class Masonreact extends React.Component {
 }
 
 Masonreact.propTypes = {
-  children: React.PropTypes.node.isRequired,
-  style: React.PropTypes.shape({}),
-  cols: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
-  margin: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
-  transitionDuration: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
-  gridClassName: React.PropTypes.string,
+  children: PropTypes.node.isRequired,
+  style: PropTypes.shape({}),
+  cols: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  margin: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  transitionDuration: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  gridClassName: PropTypes.string,
 }
 
 Masonreact.defaultProps = {
