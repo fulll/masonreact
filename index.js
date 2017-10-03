@@ -11,6 +11,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _masonryLayout = require('masonry-layout');
 
 var _masonryLayout2 = _interopRequireDefault(_masonryLayout);
@@ -87,12 +91,12 @@ var Masonreact = function (_React$Component) {
 }(_react2.default.Component);
 
 Masonreact.propTypes = {
-  children: _react2.default.PropTypes.node.isRequired,
-  style: _react2.default.PropTypes.shape({}),
-  cols: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number, _react2.default.PropTypes.string]),
-  margin: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number, _react2.default.PropTypes.string]),
-  transitionDuration: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number, _react2.default.PropTypes.string]),
-  gridClassName: _react2.default.PropTypes.string
+  children: _propTypes2.default.node.isRequired,
+  style: _propTypes2.default.shape({}),
+  cols: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  margin: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  transitionDuration: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  gridClassName: _propTypes2.default.string
 };
 
 Masonreact.defaultProps = {
